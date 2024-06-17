@@ -34,8 +34,11 @@ void print_file_size(const char *filename) {
 
     encode_shell_string(filename, encoded_filename, sizeof(encoded_filename));
 
+//for executing in UNIX
     snprintf(cmd, sizeof(cmd), "wc -c < \"%s\"", encoded_filename);
-    
+// for executing in Windows CMD	
+// snprintf(cmd, sizeof(cmd), "type %s | find /v /c \"\"", encoded_filename);
+
     system(cmd); // Execute the command
 }
 
